@@ -10,6 +10,16 @@ class CustomUserAdmin(UserAdmin):
 
     """Custom User Admin"""
 
+    list_display = (
+        "username",
+        "email",
+        "first_name",
+        "last_name",
+        "manager",
+        "is_staff",
+    )
+    list_filter = UserAdmin.list_filter + ("manager",)
+
     fieldsets = UserAdmin.fieldsets + (
         (
             "Custom Profile",
@@ -21,6 +31,9 @@ class CustomUserAdmin(UserAdmin):
                     "birthdate",
                     "language",
                     "currency",
+                    "appartment",
+                    "manager",
+                    "cart",
                 )
             },
         ),

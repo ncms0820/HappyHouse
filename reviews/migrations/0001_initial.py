@@ -15,25 +15,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Message',
+            name='Review',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
-                ('message', models.TextField()),
+                ('title', models.CharField(max_length=80)),
+                ('review', models.TextField(max_length=255)),
+                ('place', models.CharField(choices=[('guesthouse', 'guest house'), ('hairsalon', 'hairsalon'), ('facility', 'facility')], default='hairsalon', max_length=20)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'abstract': False,
-            },
-        ),
-        migrations.CreateModel(
-            name='Conversation',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('participants', models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'abstract': False,

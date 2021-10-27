@@ -41,11 +41,12 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     "conversation",
     "core",
-    "lists",
     "reservations",
     "reviews",
-    "shop",
+    "products",
     "users",
+    "notices",
+    "photos",
 ]
 
 THIRD_PARTY_APPS = []
@@ -138,3 +139,7 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
+
+MEDIA_ROOT = BASE_DIR / "uploads"
+
+MEDIA_URL = "/media/"
