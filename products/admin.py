@@ -5,6 +5,13 @@ from . import models
 # Register your models here.
 
 
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    """Category Admin Definition"""
+
+    pass
+
+
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
 
@@ -25,16 +32,6 @@ class PhotoAdmin(admin.ModelAdmin):
     get_thumbnail.short_description = "Thumbnail"
 
 
-@admin.register(models.Category)
-class TypeAdmin(admin.ModelAdmin):
-
-    """Type Admin Definition"""
-
-    list_display = ("category",)
-
-    filter_horizontal = ("product",)
-
-
 class PhotoInline(admin.TabularInline):
 
     model = models.Photo
@@ -52,6 +49,7 @@ class ProductAdmin(admin.ModelAdmin):
         "price",
         "description",
         "seller",
+        "category",
     )
 
     list_filter = ("seller",)

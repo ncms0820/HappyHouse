@@ -12,3 +12,11 @@ class NoticeAdmin(admin.ModelAdmin):
         "writer",
     )
     list_filter = ("writer",)
+
+
+@admin.register(models.Comments)
+class CommentAdmin(admin.ModelAdmin):
+
+    """Comments Admin Definition"""
+
+    pass

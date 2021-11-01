@@ -17,8 +17,9 @@ class CustomUserAdmin(UserAdmin):
         "last_name",
         "manager",
         "is_staff",
+        "apartment",
     )
-    list_filter = UserAdmin.list_filter + ("manager",)
+    list_filter = UserAdmin.list_filter + ("manager", "apartment")
 
     fieldsets = UserAdmin.fieldsets + (
         (
@@ -31,10 +32,11 @@ class CustomUserAdmin(UserAdmin):
                     "birthdate",
                     "language",
                     "currency",
-                    "appartment",
+                    "apartment",
                     "manager",
                     "cart",
                 )
             },
         ),
     )
+    filter_horizontal = ("cart",)

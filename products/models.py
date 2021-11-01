@@ -25,11 +25,13 @@ class Category(core_models.TimeStampedModel):
 
     """category Model Definition"""
 
-    category = models.CharField(max_length=20)
-    product = models.ManyToManyField("Product", related_name="category")
+    name = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.category
+        return self.name
+
+    class Meta:
+        verbose_name = "Categories"
 
 
 class Product(core_models.TimeStampedModel):
@@ -41,6 +43,9 @@ class Product(core_models.TimeStampedModel):
     description = models.TextField(max_length=255, default="")
     seller = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="product"
+    )
+    category = models.ForeignKey(
+        "Category", on_delete=models.CASCADE, related_name="product"
     )
     quantity = models.PositiveIntegerField(default="0")
 

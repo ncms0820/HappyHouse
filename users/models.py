@@ -34,31 +34,33 @@ class User(AbstractUser):
         (CURRENCY_KRW, "KRW"),
     )
 
-    APPARTMENT_A1 = "a1"
-    APPARTMENT_A2 = "a2"
-    APPARTMENT_A3 = "a3"
-    APPARTMENT_B1 = "b1"
-    APPARTMENT_B2 = "b2"
-    APPARTMENT_B3 = "b3"
-    APPARTMENT_C2 = "c2"
-    APPARTMENT_C3 = "c3"
-    APPARTMENT_C4 = "c4"
-    APPARTMENT_C5 = "c5"
+    APARTMENT_A1 = "a1"
+    APARTMENT_A2 = "a2"
+    APARTMENT_A3 = "a3"
+    APARTMENT_B1 = "b1"
+    APARTMENT_B2 = "b2"
+    APARTMENT_B3 = "b3"
+    APARTMENT_C2 = "c2"
+    APARTMENT_C3 = "c3"
+    APARTMENT_C4 = "c4"
+    APARTMENT_C5 = "c5"
+    GUEST = "guest"
 
-    APPARTMENT_CHOICES = (
-        (APPARTMENT_A1, "A1"),
-        (APPARTMENT_A2, "A2"),
-        (APPARTMENT_A3, "A3"),
-        (APPARTMENT_B1, "B1"),
-        (APPARTMENT_B2, "B2"),
-        (APPARTMENT_B3, "B3"),
-        (APPARTMENT_C2, "C2"),
-        (APPARTMENT_C3, "C3"),
-        (APPARTMENT_C4, "C4"),
-        (APPARTMENT_C5, "rooftop house"),
+    APARTMENT_CHOICES = (
+        (GUEST, "guest"),
+        (APARTMENT_A1, "A1"),
+        (APARTMENT_A2, "A2"),
+        (APARTMENT_A3, "A3"),
+        (APARTMENT_B1, "B1"),
+        (APARTMENT_B2, "B2"),
+        (APARTMENT_B3, "B3"),
+        (APARTMENT_C2, "C2"),
+        (APARTMENT_C3, "C3"),
+        (APARTMENT_C4, "C4"),
+        (APARTMENT_C5, "rooftop house"),
     )
 
-    avatar = models.ImageField(upload_to="avatar", blank=True)
+    avatar = models.ImageField(upload_to="avatar", blank=True, null=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
     bio = models.TextField(default="", blank=True)
     birthdate = models.DateField(blank=True, null=True)
@@ -66,6 +68,4 @@ class User(AbstractUser):
     currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, blank=True)
     manager = models.BooleanField(default=False)
     cart = models.ManyToManyField("products.Product", blank=True)
-    appartment = models.CharField(
-        choices=APPARTMENT_CHOICES, max_length=40, blank=True, null=True
-    )
+    apartment = models.CharField(choices=APARTMENT_CHOICES, max_length=40)
